@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../static/js/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="../static/js/data-handler.js"></script>
+    <script type="text/javascript" src="../static/js/activity-handler.js"></script>
+
+    <link href="../static/image/favicon.ico" rel='icon' type='image/x-icon'/>
+    <link href="../static/css/styles.css" rel='css' type='text/css'/>
+
+    <title>Tracker</title>
+</head>
+<body>
+<div class="form-popup" id="myForm">
+    <form class="form-container">
+        <h1>Login</h1>
+
+        <label><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" id="email" required>
+
+        <label><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" id="psw" required>
+
+        <button type="button" class="btn">Login</button>
+    </form>
+</div>
+<div style="position:absolute; right:20px;" hidden id="logout">
+    <td align=right><a href="{{ url_for('logout') }}">Log Out</a></td>
+</div>
+<div id="show" hidden>
+    your activity-
+    <select name="operation" onchange="activity_show()">
+        <option value="none">-----</option>
+        <option value="create_activity">Create Activity</option>
+        <option value="monitor_activity">Monitor Activity</option>
+        <option value="delete_activity">Delete Activity</option>
+    </select>
+</div>
+<div id="create_activity" hidden>
+    Create activity
+</div>
+<div id="monitor_activity" hidden>
+    Monitor activity
+</div>
+<div id="delete_activity" hidden>
+    Delete activity
+</div>
+</body>
+</html>

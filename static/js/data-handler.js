@@ -4,18 +4,26 @@ $(function () {
         var password = $('#psw').val();
         $.ajax({
             url: '/login',
-            dataType: "Json",
-            data: {
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify({
                 username: username,
                 password: password
-            },
+            }),
             type: 'POST',
             success: function (response) {
                 res = response;
                 console.log("Working");
                 console.log(response);
-                alert(res["status"]);
-                $('#show').show();
+                $('#email').val("");
+                $('#psw').val("");
+                if (res["status"] == "Invalid") {
+                    alert(res["status"]);
+                } else {
+                    alert(res["status"]);
+                    $('#show').show();
+                    $('#logout').show();
+                }
 
             },
             error: function (error) {
