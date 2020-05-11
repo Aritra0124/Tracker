@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../static/js/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="../static/js/data-handler.js"></script>
+    <link href="../static/image/favicon.ico" rel='icon' type='image/x-icon'/>
+    <link href="{{ url_for('static', filename='css/styles.css')}}" rel='css' type='text/css'/>
+
+    <title>Tracker</title>
+</head>
+<body>
+Hello this is a activity tracker based on python....
+<div class="form-popup" id="myForm">
+    <form class="form-container">
+        <h1>Login</h1>
+
+        <label><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" id="email" required>
+
+        <label><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" id="psw" required>
+
+        <button type="button" class="btn" name="button">Login</button>
+    </form>
+</div>
+
+<div id="show" hidden>
+    hiiiiii
+</div>
+</body>
+</html>
