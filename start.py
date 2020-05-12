@@ -32,7 +32,6 @@ def login():
         data = json.loads(request.get_data(as_text=True))
         id = login_validation(data['username'], data['password'])
         if id != None:
-            print(id[0])
             session['id'] = id[0]
             return {"status": "Valid user"}
         else:
@@ -43,6 +42,43 @@ def login():
 def logout():
     session.pop('id', None)
     return redirect(url_for('index'))
+
+
+@app.route('/add_activity', methods=['POST'])
+def add_activity():
+    if request.method == 'POST':
+        data = json.loads(request.get_data(as_text=True))
+        print(data)
+        if id != None:
+            return {"status code": 200, "status": "added"}
+        else:
+            return {"status code": 404, "status": "Not added"}
+
+
+@app.route('/activities', methods=['GET'])
+def activities():
+    if request.method == 'GET':
+        #        data = json.loads(request.get_data(as_text=True))
+        #        print(data["username"])
+        pass
+    return jsonify({"activities": ["A", "B", "C"]})
+
+
+@app.route('/activity_details', methods=['POST'])
+def activity_details():
+    if request.method == 'POST':
+        data = json.loads(request.get_data(as_text=True))
+        print(data["activity_name"])
+    return jsonify({"activities_details": {"activity_name": "A", "activity_type": "activity_type",
+                                           "target_type": "target_type"}})
+
+
+@app.route('/update_activity', methods=['POST'])
+def update_activity():
+    if request.method == 'POST':
+        data = json.loads(request.get_data(as_text=True))
+        print(data)
+    return {"status code": 200, "status": "Updated"}
 
 
 if __name__ == '__main__':

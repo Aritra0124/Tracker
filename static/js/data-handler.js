@@ -1,5 +1,5 @@
-$(function () {
-    $('button').click(function () {
+$(document).ready(function () {
+    $('#login').click(function () {
         var username = $('#email').val();
         var password = $('#psw').val();
         $.ajax({
@@ -13,8 +13,6 @@ $(function () {
             type: 'POST',
             success: function (response) {
                 res = response;
-                console.log("Working");
-                console.log(response);
                 $('#email').val("");
                 $('#psw').val("");
                 if (res["status"] == "Invalid") {
@@ -23,6 +21,7 @@ $(function () {
                     alert(res["status"]);
                     $('#show').show();
                     $('#logout').show();
+                    $('#myForm').hide();
                 }
 
             },
