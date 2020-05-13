@@ -1,30 +1,28 @@
 $(document).ready(function () {
-    $('#login').click(function () {
-        var username = $('#email').val();
-        var password = $('#psw').val();
+    $('#create_login').click(function () {
+        var username = $('#create_username').val();
+        var email_id = $('#create_email').val();
+        var password = $('#create_psw').val();
         $.ajax({
-            url: '/login',
+            url: '/create_login',
             dataType: "json",
             contentType: "application/json",
             data: JSON.stringify({
                 username: username,
+                email_id: email_id,
                 password: password
             }),
             type: 'POST',
             success: function (response) {
                 res = response;
-                $('#email').val("");
-                $('#psw').val("");
+
                 if (res["status"] == "Invalid") {
                     alert(res["status"]);
                 } else {
                     alert(res["status"]);
-                    $('#show').show();
-                    $('#logout').show();
-                    $('#user_name').append(res['name']);
-                    $('#myForm').hide();
                 }
-
+                $("#create_username").html("");
+                $("#create_email").html("");
             },
             error: function (error) {
                 alert("No data found")

@@ -3,7 +3,6 @@ $(document).ready(function () {
         var activity_name = $("#ac_name").text();
         var to_time = $('#to_time').val();
         var from_time = $('#from_time').val();
-
         $.ajax({
             url: '/update_activity',
             dataType: "json",

@@ -17,7 +17,6 @@ $(document).ready(function () {
             success: function (response) {
                 res = response;
                 data = res["activities_details"];
-                console.log(data["activity_name"])
                 $('#ac_name').append(data["activity_name"]);
                 $('#ac_type').append(data["activity_type"]);
                 $('#ac_target').append(data["target_type"]);

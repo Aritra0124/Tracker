@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="../static/js/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="../static/js/data-handler.js"></script>
     <script type="text/javascript" src="../static/js/activity-handler.js"></script>
@@ -10,25 +10,40 @@
     <script type="text/javascript" src="../static/js/monitor_activity-handler.js"></script>
     <script type="text/javascript" src="../static/js/tracker_activity-handler.js"></script>
     <script type="text/javascript" src="../static/js/update_activity-handler.js"></script>
-    <link href="../static/image/favicon.ico" rel='icon' type='image/x-icon'/>
-    <link href="../static/css/styles.css" rel='css' type='text/css'/>
+    <script type="text/javascript" src="../static/js/create_account-handler.js"></script>
+    <script type="text/javascript" src="../static/js/hide_n_show-handler.js"></script>
 
+    <link href="../static/image/favicon.ico" rel='icon' type='image/x-icon'/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">
     <title>Tracker</title>
 </head>
 <body>
 
 <div class="form-popup" id="myForm">
-    <form class="form-container">
-        <h1>Login</h1>
+    <div id="create_user">
+        <p class="pointer" id="create_account">Create Account</p></br>
+        <div id="user_details" hidden>
+            <label><b>Username</b></label>
+            <input type="text" placeholder="Username" id="create_username" required></br>
+            <label><b>Email</b></label>
+            <input type="text" placeholder="Email" id="create_email" required></br>
+            <label><b>Password</b></label>
+            <input type="password" placeholder="Password" id="create_psw" required></br>
+            <button type="button" id="create_login">Create</button>
+        </div>
+    </div>
+    <div id="login_user">
+        <p class="pointer" id="login_here">Login</p>
+        <div id="login_details" hidden>
+            <label><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" id="email" required></br>
 
-        <label><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" id="email" required>
+            <label><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" id="psw" required></br>
 
-        <label><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" id="psw" required>
-
-        <button type="button" id="login">Login</button>
-    </form>
+            <button type="button" id="login">Login</button>
+        </div>
+    </div>
 </div>
 
 <div style="position:absolute; right:20px;" hidden id="logout">
@@ -37,28 +52,30 @@
 
 
 <div id="show" hidden>
-    your activity-
-    <select id="operation" onchange="activity_show()">
-        <option disabled selected value>-----</option>
-        <option value="create_activity">Create Activity</option>
-        <option value="monitor_activity">Monitor Activity</option>
-        <option value="delete_activity">Delete Activity</option>
-    </select>
+    <label id="user_name"></label>
+    your activity- &nbsp; &nbsp; <select id="operation" onchange="activity_show()" onmouseover="this.size=this.length"
+                                         onmouseout="this.size=1">
+    <option disabled selected value>---</option>
+    <option value="create_activity">Create Activity</option>
+    <option value="monitor_activity">Monitor Activity</option>
+    <option value="delete_activity">Delete Activity</option>
+</select>
+
 </div>
 
 
 <div id="create_activity" hidden>
     Create activity
-    <label><b>Activity Name</b></label>
+    <label><b>Activity Name</b></label></br>
     <input type="text" placeholder="Activity Name" id="activity_name" required>
-    <label><b>Activity Type</b></label>
+    <label><b>Activity Type</b></label></br>
     <select id="activity_type">
         <option disabled selected value>-----</option>
         <option value="study">Study</option>
         <option value="project">Project</option>
         <option value="work">Work</option>
     </select>
-    <label><b>Daily Target</b></label>
+    <label><b>Daily Target</b></label></br>
     <select id="target_type">
         <option disabled selected value>-----</option>
         <option value="30min">30min</option>
@@ -69,33 +86,31 @@
         <option value="5hr">5hr</option>
         <option value="more">More</option>
     </select>
-    <label><b>Note</b></label>
+    <label><b>Note</b></label></br>
     <textarea name="paragraph_text" cols="50" rows="10" placeholder="optional note" id="activity_note"></textarea>
     <button id="add_activity">ADD</button>
 </div>
 
 
 <div id="monitor_activity" hidden>
-    Monitor your activities here
-    <table style="width: 100%">
+    <table>
         <thead>
         <tr>
             <th>Activity Name</th>
         </tr>
         </thead>
-        <tbody id="tbody">
+        <tbody class="pointer" id="tbody">
         </tbody>
     </table>
     <div id="show_data" hidden>
-        here you will show your activities.
         <label id="ac_name" name="activity_name"></label></br>
         <label id="ac_type" name="activity_type"></label></br>
         <label id="ac_target" name="target_type"></label></br>
         <div id="update_activity">
-            To
-            <input type="time" id="to_time"/>
             From
             <input type="time" id="from_time"/>
+            To
+            <input type="time" id="to_time"/>
             <button id="add_update">Update</button>
         </div>
     </div>
