@@ -6,6 +6,22 @@ app = Flask(__name__)
 app.secret_key = "tracking system"
 
 
+def graph_data():
+    db = pymysql.connect("localhost", "pmauser", "aritraroot", "tracker")
+    cursor = db.cursor()
+    sql = "select DATE(entry_time) as entry_date,total_time from activity_update where user_id = %s and activity_id = %s"
+    cursor.execute(sql, (session["id"], session["activity_id"]))
+    db.close()
+    date_time = cursor.fetchall()
+    label = []
+    time = []
+    for data in date_time:
+        date, total_time = data
+        label.append(date)
+        time.append(total_time)
+    return label, time
+
+
 def get_details(activity_name):
     db = pymysql.connect("localhost", "pmauser", "aritraroot", "tracker")
     cursor = db.cursor()
@@ -37,7 +53,6 @@ def total_time(from_time, to_time):
         total_hr = total_hr - 1
         total_min = abs(total_min)
     total = str(total_hr) + "." + str(total_min)
-    print(float(total))
     return float(total)
 
 
@@ -151,16 +166,16 @@ def activity_details():
         data = json.loads(request.get_data(as_text=True))
         activity_details = get_details(data["activity_name"])
         session['activity_id'] = activity_details[0]
+        labels, total_time = graph_data()
     return jsonify({"activities_details": {"activity_name": activity_details[1], "activity_type": activity_details[2],
-                                           "target_type": activity_details[3]}})
+                                           "target_type": activity_details[3]},
+                    "dataset": {"labels": labels, "data": total_time}})
 
 
 @app.route('/update_activity', methods=['POST'])
 def update_activity():
     if request.method == 'POST':
         data = json.loads(request.get_data(as_text=True))
-        print(data)
-        print(session)
         id = activity_update(data)
         if id != None:
             return {"status code": 200, "status": "Updated"}

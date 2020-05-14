@@ -4,7 +4,6 @@ $(document).ready(function () {
         var activity_type = $("#activity_type option:selected").val();
         var target_type = $("#target_type option:selected").val()
         var activity_note = $('#activity_note').val();
-        console.log(activity_type, target_type)
         $.ajax({
             url: '/add_activity',
             dataType: "json",
@@ -18,7 +17,6 @@ $(document).ready(function () {
             type: 'POST',
             success: function (response) {
                 res = response;
-                console.log(response);
                 //if (res["status code"] == 200){
                 alert(res["status"]);
                 $("#activity_name").trigger("reset");

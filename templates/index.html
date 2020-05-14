@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <script type="text/javascript" src="../static/js/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="../static/js/data-handler.js"></script>
     <script type="text/javascript" src="../static/js/activity-handler.js"></script>
@@ -12,6 +14,8 @@
     <script type="text/javascript" src="../static/js/update_activity-handler.js"></script>
     <script type="text/javascript" src="../static/js/create_account-handler.js"></script>
     <script type="text/javascript" src="../static/js/hide_n_show-handler.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
     <link href="../static/image/favicon.ico" rel='icon' type='image/x-icon'/>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">
@@ -20,28 +24,26 @@
 <body>
 
 <div class="form-popup" id="myForm">
+    <img src="../static/image/icons-clock-50.png" class="icon_image">
     <div id="create_user">
         <p class="pointer" id="create_account">Create Account</p></br>
-        <div id="user_details" hidden>
-            <label><b>Username</b></label>
-            <input type="text" placeholder="Username" id="create_username" required></br>
-            <label><b>Email</b></label>
-            <input type="text" placeholder="Email" id="create_email" required></br>
-            <label><b>Password</b></label>
-            <input type="password" placeholder="Password" id="create_psw" required></br>
-            <button type="button" id="create_login">Create</button>
+        <div class="user_data" id="user_details" hidden>
+            <input type="text" class="user_data" placeholder="Enter Username" id="create_username" required></br>
+            <input type="text" class="user_data" placeholder="Enter Email" id="create_email" required></br>
+            <input type="password" class="user_data" placeholder="Enter Password" id="create_psw" required></br>
+            <button type="button" class="user_data" id="create_login">Create</button>
         </div>
     </div>
     <div id="login_user">
         <p class="pointer" id="login_here">Login</p>
         <div id="login_details" hidden>
-            <label><b>Email</b></label>
-            <input type="text" placeholder="Enter Email" id="email" required></br>
+            <!--label><b>Email</b></label-->
+            <input type="text" class="user_data1" placeholder="Enter Email" id="email" required></br>
 
-            <label><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" id="psw" required></br>
+            <!--label><b>Password</b></label-->
+            <input type="password" class="user_data1" placeholder="Enter Password" id="psw" required></br>
 
-            <button type="button" id="login">Login</button>
+            <button type="button" class="user_data1" id="login">Login</button>
         </div>
     </div>
 </div>
@@ -53,8 +55,7 @@
 
 <div id="show" hidden>
     <label id="user_name"></label>
-    your activity- &nbsp; &nbsp; <select id="operation" onchange="activity_show()" onmouseover="this.size=this.length"
-                                         onmouseout="this.size=1">
+    your activity- &nbsp; &nbsp; <select id="operation" onchange="activity_show()">
     <option disabled selected value>---</option>
     <option value="create_activity">Create Activity</option>
     <option value="monitor_activity">Monitor Activity</option>
@@ -113,6 +114,10 @@
             <input type="time" id="to_time"/>
             <button id="add_update">Update</button>
         </div>
+
+        <div class="graph_container">
+            <canvas id="myChart" width="50%" height="50%"></canvas>
+        </div>
     </div>
 
 </div>
@@ -122,4 +127,6 @@
     Delete activity
 </div>
 </body>
+<!--script src="../static/css/graph-handler.js"></script-->
+
 </html>

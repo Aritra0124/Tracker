@@ -15,7 +15,6 @@ $(document).ready(function () {
             type: 'POST',
             success: function (response) {
                 res = response;
-                console.log(res)
                 alert(res["status"]);
 
 

@@ -1,17 +1,12 @@
 body {
-    background-color: wheat;
+    background-image: linear-gradient(to left, #845ec2, #d65db1, #ff6f91, #ff9671, #ffc75f, #f9f871);
 }
-
 h1 {
   color: blue;
 }
 
 p {
   color: red;
-}
-
-h2 {
-  color: pink
 }
 
 
@@ -22,12 +17,45 @@ h2 {
     right: 0;
     bottom: 0;
     left: 0;
-    width: 150px;
-    height: 100px;
+    width: 350px;
+    height: 400px;
+    display: flex;
+    webkit-display: box;
+    moz-display: box;
+    ms-display: flexbox;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-around;
+    align-items: center;
+    text-align: center;
+    padding: 6%;
+    background: azure;
+    box-sizing: border-box;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.icon_image {
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1000px;
+    display: block;
 }
 
 .pointer {
     cursor: pointer;
+}
+
+.user_data {
+    margin-bottom: 20px;
+}
+
+.user_data1 {
+    margin-bottom: 20px;
+    justify-content: center;
 }
 
 button:hover {
@@ -45,8 +73,27 @@ a:hover, a:active {
     color: lightgreen;
 }
 
-select {
+.graph_container {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 200px;
+    height: 300px;
+    display: flex;
+    webkit-display: box;
+    moz-display: box;
+    ms-display: flexbox;
+    flex-wrap: wrap;
 
-    display: inline;
-
+    align-content: space-around;
+    padding: 6%;
+    background: azure;
+    box-sizing: border-box;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    object-fit: cover;
 }
