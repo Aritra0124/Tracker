@@ -9,39 +9,9 @@ p {
   color: red;
 }
 
-
-.form-popup {
-    position: absolute;
-    margin: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 350px;
-    height: 400px;
-    display: flex;
-    webkit-display: box;
-    moz-display: box;
-    ms-display: flexbox;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: space-around;
-    align-items: center;
-    text-align: center;
-    padding: 6%;
-    background: azure;
-    box-sizing: border-box;
-    overflow: hidden;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 10px;
-    object-fit: cover;
-}
-
 .icon_image {
-    margin-top: 0px;
     margin-left: auto;
     margin-right: auto;
-    max-width: 1000px;
     display: block;
 }
 
@@ -50,11 +20,11 @@ p {
 }
 
 .user_data {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .user_data1 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     justify-content: center;
 }
 
@@ -62,38 +32,23 @@ button:hover {
     box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
-a:link, a:visited {
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
+.activity_card {
+    top: 20px;
+    margin-bottom: 10px;
 }
 
-a:hover, a:active {
-    color: lightgreen;
+.heading {
+    top: 0px;
+    margin-top: 1px;
 }
 
-.graph_container {
+textarea {
+    width: 150px;
+    height: 100px;
+}
+
+.myChart {
+    width: 80%;
+    height: 80%;
     position: absolute;
-    margin: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 200px;
-    height: 300px;
-    display: flex;
-    webkit-display: box;
-    moz-display: box;
-    ms-display: flexbox;
-    flex-wrap: wrap;
-
-    align-content: space-around;
-    padding: 6%;
-    background: azure;
-    box-sizing: border-box;
-    overflow: hidden;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 10px;
-    object-fit: cover;
 }

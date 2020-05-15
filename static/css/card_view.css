@@ -1,0 +1,99 @@
+.form-popup {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 350px;
+    height: 400px;
+    display: flex;
+    webkit-display: box;
+    moz-display: box;
+    ms-display: flexbox;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-around;
+    align-items: center;
+    text-align: center;
+    padding: 6%;
+    background: azure;
+    box-sizing: border-box;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    object-fit: fill;
+
+}
+
+.activity_container {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 420px;
+    height: 500px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-around;
+    align-items: center;
+    text-align: center;
+    padding: 6%;
+    background: azure;
+    box-sizing: border-box;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    object-fit: fill;
+}
+
+#monitor_activity {
+    position: relative;
+    margin: auto;
+    top: 150px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 600px;
+    height: 1000px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-around;
+    align-items: center;
+    text-align: center;
+    padding: 6%;
+    background: azure;
+    box-sizing: border-box;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    object-fit: fill;
+}
+
+@media screen and (max-width: 500px) {
+    .form-popup {
+        float: none;
+        position: fixed;
+        align-content: space-around;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 1492px) {
+    .form-popup {
+        background-size: 100%;
+        float: none;
+        position: fixed;
+        align-content: space-around;
+        align-items: center;
+        text-align: center;
+    }
+
+    .form-popup br {
+        display: block;
+        margin: 10px 0;
+    }
+}

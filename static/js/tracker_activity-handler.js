@@ -15,7 +15,7 @@ function renderChart(data, labels, activity_name) {
                     'rgba(75, 192, 192, 1)'
 
                 ],
-                borderWidth: 3
+                borderWidth: 5
             }]
         },
         options: {

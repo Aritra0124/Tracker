@@ -15,13 +15,16 @@
     <script type="text/javascript" src="../static/js/create_account-handler.js"></script>
     <script type="text/javascript" src="../static/js/hide_n_show-handler.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+    <link rel="stylesheet" href="../static/css/card_view.css">
+    <link rel="stylesheet" href="../static/css/header_view.css">
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
     <link href="../static/image/favicon.ico" rel='icon' type='image/x-icon'/>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">
     <title>Tracker</title>
 </head>
-<body>
+<br>
 
 <div class="form-popup" id="myForm">
     <img src="../static/image/icons-clock-50.png" class="icon_image">
@@ -48,50 +51,54 @@
     </div>
 </div>
 
-<div style="position:absolute; right:20px;" hidden id="logout">
-    <td align=right><a href="{{ url_for('logout') }}">Log Out</a></td>
+<div class="header" id="header" hidden>
+    <div class="header-left">
+        <!--img src="../static/image/icons-clock-50.png" class="logo"-->
+        <div id="show" hidden>
+            <label id="user_name"></label>
+            <label>your activity- </label><select id="operation" onchange="activity_show()">
+            <option disabled selected value>---</option>
+            <option value="create_activity">Create Activity</option>
+            <option value="monitor_activity">Monitor Activity</option>
+            <option value="delete_activity">Delete Activity</option>
+        </select>
+        </div>
+    </div>
+    <div class="header-right">
+        <a href="#about">About</a>
+        <a href="{{ url_for('logout') }}" class="active">Log Out</a>
+    </div>
 </div>
 
-
-<div id="show" hidden>
-    <label id="user_name"></label>
-    your activity- &nbsp; &nbsp; <select id="operation" onchange="activity_show()">
-    <option disabled selected value>---</option>
-    <option value="create_activity">Create Activity</option>
-    <option value="monitor_activity">Monitor Activity</option>
-    <option value="delete_activity">Delete Activity</option>
-</select>
-
+<div class="activity_container" id="create_activity" hidden>
+    <div class="activity_card">
+        <label class="heading"> Create activity</label><br>
+        <!--label class="activity_card"><b>Activity Name</b></label-->
+        <input type="text" class="activity_card" placeholder="Enter Activity Name" id="activity_name" required><br>
+        <!--label class="activity_card"><b>Activity Type</b></label-->
+        <select class="activity_card" id="activity_type">
+            <option disabled selected value>Select Activity Type</option>
+            <option value="study">Study</option>
+            <option value="project">Project</option>
+            <option value="work">Work</option>
+        </select><br>
+        <!--label class="activity_card" ><b>Daily Target</b></label-->
+        <select class="activity_card" id="target_type">
+            <option disabled selected value>Select Daily Target</option>
+            <option value="30min">30min</option>
+            <option value="1hr">1hr</option>
+            <option value="2hr">2hr</option>
+            <option value="3hr">3hr</option>
+            <option value="4hr">4hr</option>
+            <option value="5hr">5hr</option>
+            <option value="more">More</option>
+        </select><br>
+        <!--label class="activity_card"><b>Note</b></label><br-->
+        <textarea class="activity_card" name="paragraph_text" cols="50" rows="10" placeholder="Add Note if any"
+                  id="activity_note"></textarea><br>
+        <button id="add_activity">ADD</button>
+    </div>
 </div>
-
-
-<div id="create_activity" hidden>
-    Create activity
-    <label><b>Activity Name</b></label></br>
-    <input type="text" placeholder="Activity Name" id="activity_name" required>
-    <label><b>Activity Type</b></label></br>
-    <select id="activity_type">
-        <option disabled selected value>-----</option>
-        <option value="study">Study</option>
-        <option value="project">Project</option>
-        <option value="work">Work</option>
-    </select>
-    <label><b>Daily Target</b></label></br>
-    <select id="target_type">
-        <option disabled selected value>-----</option>
-        <option value="30min">30min</option>
-        <option value="1hr">1hr</option>
-        <option value="2hr">2hr</option>
-        <option value="3hr">3hr</option>
-        <option value="4hr">4hr</option>
-        <option value="5hr">5hr</option>
-        <option value="more">More</option>
-    </select>
-    <label><b>Note</b></label></br>
-    <textarea name="paragraph_text" cols="50" rows="10" placeholder="optional note" id="activity_note"></textarea>
-    <button id="add_activity">ADD</button>
-</div>
-
 
 <div id="monitor_activity" hidden>
     <table>
@@ -116,7 +123,7 @@
         </div>
 
         <div class="graph_container">
-            <canvas id="myChart" width="50%" height="50%"></canvas>
+            <canvas class="myChart" id="myChart"></canvas>
         </div>
     </div>
 

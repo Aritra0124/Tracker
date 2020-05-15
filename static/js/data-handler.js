@@ -21,6 +21,7 @@ $(document).ready(function () {
                     alert(res["status"]);
                     $('#show').show();
                     $('#logout').show();
+                    $('#header').show()
                     $('#user_name').append(res['name']);
                     $('#myForm').hide();
                 }
