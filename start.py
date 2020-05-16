@@ -9,7 +9,7 @@ app.secret_key = "tracking system"
 def graph_data():
     db = pymysql.connect("localhost", "pmauser", "aritraroot", "tracker")
     cursor = db.cursor()
-    sql = "select DATE(entry_time) as entry_date,total_time from activity_update where user_id = %s and activity_id = %s"
+    sql = "select entry_time,total_time from activity_update where user_id = %s and activity_id = %s"
     cursor.execute(sql, (session["id"], session["activity_id"]))
     db.close()
     date_time = cursor.fetchall()
@@ -74,7 +74,7 @@ def activity_entry(data):
     cursor = db.cursor()
     sql = "insert into activity_entry values(0,%s, %s, %s, %s, %s)"
     id = cursor.execute(sql, (
-        session['id'], data["activity_name"], data["activity_type"], data["target_type"], data["activity_note"]))
+        session['id'], data["activity_name"], data["activity_type"], float(data["target_type"]), data["activity_note"]))
     db.commit()
     db.close()
     # id = cursor.fetchone()
@@ -167,9 +167,12 @@ def activity_details():
         activity_details = get_details(data["activity_name"])
         session['activity_id'] = activity_details[0]
         labels, total_time = graph_data()
+        target_time = []
+        for i in range(len(labels)):
+            target_time.append(float(activity_details[3]))
     return jsonify({"activities_details": {"activity_name": activity_details[1], "activity_type": activity_details[2],
                                            "target_type": activity_details[3]},
-                    "dataset": {"labels": labels, "data": total_time}})
+                    "dataset": {"labels": labels, "data": total_time, "target_time": target_time}})
 
 
 @app.route('/update_activity', methods=['POST'])

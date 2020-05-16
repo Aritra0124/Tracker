@@ -1,4 +1,4 @@
-function renderChart(data, labels, activity_name) {
+function renderChart(data, labels, activity_name, daily_target) {
     var ctx = document.getElementById('myChart');
     var myChart = new Chart(ctx, {
         type: 'line',
@@ -16,7 +16,14 @@ function renderChart(data, labels, activity_name) {
 
                 ],
                 borderWidth: 5
-            }]
+            },
+                {
+                    label: 'Daily Target',
+                    data: daily_target,
+                    borderColor: 'rgb(194,67,67)',
+                    borderWidth: 5
+                }
+            ]
         },
         options: {
             scales: {
@@ -55,7 +62,8 @@ $(document).ready(function () {
                 $('#ac_target').append(data["target_type"]);
 
                 $('#show_data').show();
-                renderChart(res["dataset"]["data"], res["dataset"]["labels"], data["activity_name"])
+
+                renderChart(res["dataset"]["data"], res["dataset"]["labels"], data["activity_name"], res["dataset"]["target_time"]);
             },
             error: function (error) {
                 alert("No data found")

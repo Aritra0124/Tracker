@@ -14,6 +14,7 @@
     <script type="text/javascript" src="../static/js/update_activity-handler.js"></script>
     <script type="text/javascript" src="../static/js/create_account-handler.js"></script>
     <script type="text/javascript" src="../static/js/hide_n_show-handler.js"></script>
+    <script type="text/javascript" src="../static/js/counter-handler.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
     <link rel="stylesheet" href="../static/css/card_view.css">
     <link rel="stylesheet" href="../static/css/header_view.css">
@@ -81,9 +82,10 @@
             <option value="study">Study</option>
             <option value="project">Project</option>
             <option value="work">Work</option>
+            <option value="sleep">Sleep</option>
         </select><br>
-        <!--label class="activity_card" ><b>Daily Target</b></label-->
-        <select class="activity_card" id="target_type">
+        <input type="text" class="activity_card" placeholder="Enter Daily Target" id="daily_target" required><br>
+        <!--select class="activity_card" id="target_type">
             <option disabled selected value>Select Daily Target</option>
             <option value="30min">30min</option>
             <option value="1hr">1hr</option>
@@ -93,7 +95,7 @@
             <option value="5hr">5hr</option>
             <option value="more">More</option>
         </select><br>
-        <!--label class="activity_card"><b>Note</b></label><br-->
+        <label class="activity_card"><b>Note</b></label><br-->
         <textarea class="activity_card" name="paragraph_text" cols="50" rows="10" placeholder="Add Note if any"
                   id="activity_note"></textarea><br>
         <button id="add_activity">ADD</button>
@@ -114,6 +116,15 @@
         <label id="ac_name" name="activity_name"></label></br>
         <label id="ac_type" name="activity_type"></label></br>
         <label id="ac_target" name="target_type"></label></br>
+        <div id="count_down" style="margin-bottom: 30px; margin-top: 30px">
+            <label id="counter">Counter Down Timer</label></br>
+            <input type="text" id="time_count"/></br>
+            <button type="button" id="start_counter">Start</button>
+            </br>
+            <label id="show_counter"></label></br>
+            <source id="music" src="../static/audio/mon.mpeg" type="audio/ogg">
+        </div>
+
         <div id="update_activity">
             From
             <input type="time" id="from_time"/>
