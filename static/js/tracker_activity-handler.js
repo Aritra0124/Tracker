@@ -41,7 +41,8 @@ function renderChart(data, labels, activity_name, daily_target) {
 $(document).ready(function () {
     $('#tbody').on('click', 'p', function () {
         //var value = $(this).id();
-        var currentRow = $(this).closest("tr");
+
+        var currentRow = $(this).closest("td");
         var activity_name = currentRow.find(".name").html();
         $("#ac_name").html("");
         $("#ac_type").html("");
@@ -60,7 +61,7 @@ $(document).ready(function () {
                 $('#ac_name').append(data["activity_name"]);
                 $('#ac_type').append(data["activity_type"]);
                 $('#ac_target').append(data["target_type"]);
-
+                $('#activity_list').hide();
                 $('#show_data').show();
 
                 renderChart(res["dataset"]["data"], res["dataset"]["labels"], data["activity_name"], res["dataset"]["target_time"]);

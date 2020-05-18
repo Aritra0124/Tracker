@@ -28,7 +28,7 @@
 <br>
 
 <div class="form-popup" id="myForm">
-    <img src="../static/image/icons-clock-50.png" class="icon_image">
+    <img src="../static/image/icons-clock-50.png" class="icon_image"></br>
     <div id="create_user">
         <p class="pointer" id="create_account">Create Account</p></br>
         <div class="user_data" id="user_details" hidden>
@@ -39,8 +39,8 @@
         </div>
     </div>
     <div id="login_user">
-        <p class="pointer" id="login_here">Login</p>
-        <div id="login_details" hidden>
+        <p class="pointer" id="login_here">Login</p></br>
+        <div id="login_details">
             <!--label><b>Email</b></label-->
             <input type="text" class="user_data1" placeholder="Enter Email" id="email" required></br>
 
@@ -53,22 +53,35 @@
 </div>
 
 <div class="header" id="header" hidden>
-    <div class="header-left">
-        <!--img src="../static/image/icons-clock-50.png" class="logo"-->
+    <div class="header_container">
+        <img src="../static/image/icons-clock-50.png" class="logo">
+        <label id="user_name"></label></br>
         <div id="show" hidden>
-            <label id="user_name"></label>
-            <label>your activity- </label><select id="operation" onchange="activity_show()">
+
+            <!--select id="operation" onchange="activity_show()">
             <option disabled selected value>---</option>
             <option value="create_activity">Create Activity</option>
             <option value="monitor_activity">Monitor Activity</option>
             <option value="delete_activity">Delete Activity</option>
-        </select>
+        </select--></br>
+            <label value="create_activity" id="activity_creation">Create</label></br>
+            <label value="monitor_activity" id="monitor_activities">Monitor</label></br>
+            <label value="delete_activity" id="delete_activities">Delete</label></br>
         </div>
+        <label id="count_down">Counter</label></br>
+        <a href="#about">About</a></br>
+        <a href="{{ url_for('logout') }}">Log Out</a></br>
+
     </div>
-    <div class="header-right">
-        <a href="#about">About</a>
-        <a href="{{ url_for('logout') }}" class="active">Log Out</a>
-    </div>
+</div>
+
+<div id="count_down_display" style="margin-bottom: 30px; margin-top: 30px" hidden>
+    <label id="counter">Counter Down Timer</label></br>
+    <input type="text" id="time_count"/></br>
+    <button type="button" id="start_counter">Start</button>
+    </br>
+    <label id="show_counter"></label></br>
+    <source id="music" src="../static/audio/mon.mpeg" type="audio/ogg">
 </div>
 
 <div class="activity_container" id="create_activity" hidden>
@@ -103,27 +116,18 @@
 </div>
 
 <div id="monitor_activity" hidden>
-    <table>
-        <thead>
-        <tr>
-            <th>Activity Name</th>
-        </tr>
-        </thead>
-        <tbody class="pointer" id="tbody">
-        </tbody>
-    </table>
+    <div id="activity_list">
+        <label id="Activit_name"> Activities</label>
+        <table>
+            <tbody class="pointer" id="tbody">
+            </tbody>
+        </table>
+    </div>
     <div id="show_data" hidden>
         <label id="ac_name" name="activity_name"></label></br>
         <label id="ac_type" name="activity_type"></label></br>
         <label id="ac_target" name="target_type"></label></br>
-        <div id="count_down" style="margin-bottom: 30px; margin-top: 30px">
-            <label id="counter">Counter Down Timer</label></br>
-            <input type="text" id="time_count"/></br>
-            <button type="button" id="start_counter">Start</button>
-            </br>
-            <label id="show_counter"></label></br>
-            <source id="music" src="../static/audio/mon.mpeg" type="audio/ogg">
-        </div>
+
 
         <div id="update_activity">
             From

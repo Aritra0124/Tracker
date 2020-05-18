@@ -1,24 +1,32 @@
-function activity_show() {
-    var select = $('option:selected').val();
-    /* if select personal from select box then show my text box */
-    if (select == "none") {
-        $('#create_activity').hide();
-        $('#monitor_activity').hide();
-        $('#delete_activity').hide();
-    }
-    if (select == "create_activity") {
+$(document).ready(function () {
+    $('#activity_creation').click(function () {
+        $('#count_down_display').hide();
         $('#create_activity').show();
         $('#monitor_activity').hide();
         $('#delete_activity').hide();
-    }
-    if (select == "monitor_activity") {
+
+    });
+
+});
+
+$(document).ready(function () {
+    $('#monitor_activities').click(function () {
+        $('#count_down_display').hide();
         $('#create_activity').hide();
         $('#monitor_activity').show();
         $('#delete_activity').hide();
-    }
-    if (select == "delete_activity") {
+
+    });
+
+});
+
+$(document).ready(function () {
+    $('#delete_activities').click(function () {
+        $('#count_down_display').hide();
         $('#create_activity').hide();
         $('#monitor_activity').hide();
         $('#delete_activity').show();
-    }
-}
+
+    });
+
+});

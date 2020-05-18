@@ -1,6 +1,18 @@
 $(document).ready(function () {
+    $('#count_down').click(function () {
+        $('#count_down_display').show();
+        $('#create_activity').hide();
+        $('#monitor_activity').hide();
+        $('#delete_activity').hide();
+
+    });
+
+});
+
+
+$(document).ready(function () {
     $('#start_counter').click(function () {
-        var time_count = parseFloat($('#time_count').val()) * 60;
+        var time_count = parseInt($('#time_count').val()) * 60;
         setInterval(function () {
             time_count--;
             if (time_count >= 0) {
