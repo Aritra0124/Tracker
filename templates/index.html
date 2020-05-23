@@ -3,8 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <script type="text/javascript" src="../static/js/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="../static/js/data-handler.js"></script>
     <script type="text/javascript" src="../static/js/activity-handler.js"></script>
@@ -64,13 +62,13 @@
             <option value="monitor_activity">Monitor Activity</option>
             <option value="delete_activity">Delete Activity</option>
         </select--></br>
-            <label value="create_activity" id="activity_creation">Create</label></br>
-            <label value="monitor_activity" id="monitor_activities">Monitor</label></br>
-            <label value="delete_activity" id="delete_activities">Delete</label></br>
+            <label id="routine">Routine</label></br>
+            <label id="activity_creation">Create</label></br>
+            <label id="monitor_activities">Monitor</label></br>
         </div>
         <label id="count_down">Counter</label></br>
         <a href="#about">About</a></br>
-        <a href="{{ url_for('logout') }}">Log Out</a></br>
+        <a href="{{ url_for('logout') }}" id="log_out">Log Out</a></br>
 
     </div>
 </div>
@@ -81,7 +79,7 @@
     <button type="button" id="start_counter">Start</button>
     </br>
     <label id="show_counter"></label></br>
-    <source id="music" src="../static/audio/mon.mpeg" type="audio/ogg">
+    <source id="music" src="../static/audio/music.mp3" type="audio/ogg">
 </div>
 
 <div class="activity_container" id="create_activity" hidden>

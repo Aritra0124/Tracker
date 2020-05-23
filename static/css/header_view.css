@@ -23,6 +23,7 @@
     border-radius: 4px;
 }
 
+
 #count_down {
     float: top;
     color: black;
@@ -67,7 +68,6 @@
     line-height: 25px;
     border-radius: 4px;
     margin-top: 5px;
-    width: 90%;
 }
 
 .header_container br {
@@ -87,7 +87,7 @@
     float: top;
     color: black;
     text-align: center;
-    padding: 5%;
+    padding: 10%;
     text-decoration: none;
     font-size: 18px;
     line-height: 25px;

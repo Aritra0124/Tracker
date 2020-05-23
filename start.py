@@ -9,7 +9,7 @@ app.secret_key = "tracking system"
 def graph_data():
     db = pymysql.connect("localhost", "pmauser", "aritraroot", "tracker")
     cursor = db.cursor()
-    sql = "select entry_time,total_time from activity_update where user_id = %s and activity_id = %s"
+    sql = '''select DATE(entry_time), TIME_FORMAT(SEC_TO_TIME(total_time),'%%Hh %%im') from activity_update where user_id = %s and activity_id = %s'''
     cursor.execute(sql, (session["id"], session["activity_id"]))
     db.close()
     date_time = cursor.fetchall()
@@ -42,27 +42,16 @@ def get_activities():
     return data
 
 
-def total_time(from_time, to_time):
-    from_hr, from_min = from_time.split(":")
-    if from_hr == '12':
-        from_hr = 0
-    to_hr, to_min = to_time.split(":")
-    total_hr = int(to_hr) - int(from_hr)
-    total_min = int(from_min) - int(to_min)
-    if total_min < 0:
-        total_hr = total_hr - 1
-        total_min = abs(total_min)
-    total = str(total_hr) + "." + str(total_min)
-    return float(total)
-
-
 def activity_update(data):
     db = pymysql.connect("localhost", "pmauser", "aritraroot", "tracker")
     cursor = db.cursor()
+    sql = "select TIMEDIFF(%s, %s)"
+    cursor.execute(sql, (data["to_time"], data["from_time"]))
+    total_time = cursor.fetchone()
     sql = "insert into activity_update values(0,%s, %s, NOW(), %s, %s, %s)"
     id = cursor.execute(sql, (
         session["activity_id"], session['id'], data["from_time"], data["to_time"],
-        total_time(data["from_time"], data["to_time"])))
+        total_time))
     db.commit()
     db.close()
     # id = cursor.fetchone()
@@ -72,9 +61,9 @@ def activity_update(data):
 def activity_entry(data):
     db = pymysql.connect("localhost", "pmauser", "aritraroot", "tracker")
     cursor = db.cursor()
-    sql = "insert into activity_entry values(0,%s, %s, %s, %s, %s)"
+    sql = "insert into activity_entry values(0,%s, 0,%s, %s, %s, %s)"
     id = cursor.execute(sql, (
-        session['id'], data["activity_name"], data["activity_type"], float(data["target_type"]), data["activity_note"]))
+        session['id'], data["activity_name"], data["activity_type"], str(data["target_type"]), data["activity_note"]))
     db.commit()
     db.close()
     # id = cursor.fetchone()
@@ -168,8 +157,9 @@ def activity_details():
         session['activity_id'] = activity_details[0]
         labels, total_time = graph_data()
         target_time = []
+        print(activity_details)
         for i in range(len(labels)):
-            target_time.append(float(activity_details[3]))
+            target_time.append(activity_details[3])
     return jsonify({"activities_details": {"activity_name": activity_details[1], "activity_type": activity_details[2],
                                            "target_type": activity_details[3]},
                     "dataset": {"labels": labels, "data": total_time, "target_time": target_time}})
@@ -192,4 +182,4 @@ def graph():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

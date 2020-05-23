@@ -6,8 +6,8 @@
     right: 0;
     bottom: 0;
     left: 0;
-    width: 350px;
-    height: 400px;
+    width: 300px;
+    height: 360px;
     border-radius: 5px;
     justify-content: center;
     align-content: space-around;
@@ -79,8 +79,14 @@
     object-fit: fill;
 }
 
-.activity_card label {
-    top: 0;
+.heading {
+    color: black;
+    align-content: center;
+    margin-bottom: 20px;
+    padding: 5%;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
 }
 
 #daily_target {

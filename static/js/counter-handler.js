@@ -19,8 +19,10 @@ $(document).ready(function () {
                 $('#show_counter').html("")
                 $('#show_counter').append(time_count);
                 if (time_count == 0) {
+                    const audio = new Audio("../static/audio/music.mp3");
+                    audio.play();
                     alert("Time's up");
-                    $('#music').play();
+
                 }
             }
         }, 1000)
